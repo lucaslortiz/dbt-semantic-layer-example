@@ -1,7 +1,7 @@
 WITH
 
 source AS (
-    SELECT * FROM {{ source('raw', 'green_taxi_tripdata') }}
+    SELECT * FROM {{ source('default', 'green_taxi_tripdata') }}
 ),
 
 transformations AS (

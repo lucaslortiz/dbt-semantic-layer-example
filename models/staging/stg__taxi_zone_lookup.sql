@@ -1,7 +1,7 @@
 WITH
 
 source AS (
-    SELECT * FROM {{ source('raw', 'taxi_zone_lookup') }}
+    SELECT * FROM {{ source('default', 'taxi_zone_lookup') }}
 ),
 
 transformations AS (
