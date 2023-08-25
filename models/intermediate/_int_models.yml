@@ -9,12 +9,3 @@ models:
             tests:
                 - unique
                 - not_null
-
-    - name: int__green_tripdata_aggregated
-      description: "Model with data from Green taxis trips, aggregated by date and borough, filtering Unknown boroughs"
-      columns:
-          - name: id
-            description: "The primary key for the aggregation - surrogate key using date and borough"
-            tests:
-                - unique
-                - not_null

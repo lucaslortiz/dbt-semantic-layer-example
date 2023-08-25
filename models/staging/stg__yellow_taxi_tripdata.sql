@@ -1,18 +1,18 @@
 WITH
 
 source AS (
-    SELECT * FROM {{ source('raw', 'yellow_taxi_tripdata') }}
+    SELECT * FROM {{ source('default', 'yellow_taxi_tripdata') }}
 ),
 
 transformations AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key(['VendorID', 'tpep_pickup_datetime','tpep_dropoff_datetime','PULocationID','DOLocationID','total_amount','trip_distance','passenger_count']) }} AS trip_id,
         VendorID AS vendor_id,
-        TIMESTAMP_MICROS(tpep_pickup_datetime) AS pickup_datetime,
+        TIMESTAMP_MICROS(CAST(tpep_pickup_datetime AS INT)) AS pickup_datetime,
         DATE(pickup_datetime) AS pickup_date,
         date_format(pickup_datetime, 'HH:mm:ss') AS pickup_time,
         HOUR(pickup_datetime) AS pickup_hour,
-        TIMESTAMP_MICROS(tpep_dropoff_datetime) AS dropoff_datetime,
+        TIMESTAMP_MICROS(CAST(tpep_dropoff_datetime AS INT)) AS dropoff_datetime,
         DATE(dropoff_datetime) AS dropoff_date,
         date_format(dropoff_datetime, 'HH:mm:ss') AS dropoff_time,
         HOUR(dropoff_datetime) AS dropoff_hour,
