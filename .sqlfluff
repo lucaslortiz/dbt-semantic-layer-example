@@ -1,0 +1,38 @@
+[sqlfluff]
+templater = dbt
+dialect = databricks
+ignore_templated_areas = True
+exclude_rules = L031
+
+[sqlfluff:layout:type:comma]  # trailing commas
+line_position = trailing
+
+[sqlfluff:templater:dbt]
+project_dir = .
+profiles_dir = .
+
+[sqlfluff:rules]
+max_line_length = 130
+
+[sqlfluff:rules:L002]  # tabs
+tab_space_size = 4
+
+[sqlfluff:rules:capitalisation.keywords]  # Keywords
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]  # Inconsistent capitalisation of unquoted identifiers
+ignore_words = []
+extended_capitalisation_policy = pascal
+unquoted_identifiers_policy = column_aliases
+
+[sqlfluff:rules:capitalisation.functions]  # Function names
+extended_capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.literals]  # Null & Boolean Literals
+capitalisation_policy = upper
+
+[sqlfluff:rules:L051]  # Join clauses should be fully qualified
+fully_qualify_join_types = outer
+
+[sqlfluff:rules:L057]  # Do not use special characters in identifiers
+additional_allowed_characters = ["<", ">", "`"]

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+    - name: stg__green_taxi_tripdata
+      description: "Green taxis trip data - taxis that also do pickups outside Manhattan"
+      columns:
+          - name: trip_id
+            description: "The primary key for the trip - surrogate key"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg__yellow_taxi_tripdata
+      description: "Yellow taxis trip data - taxis that only do pickups inside Manhattan"
+      columns:
+          - name: trip_id
+            description: "The primary key for the trip - surrogate key"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg__taxi_zone_lookup
+      description: "Locations data"
+      columns:
+          - name: LocationID
+            description: "The primary key for the location"
+            tests:
+                - unique
+                - not_null

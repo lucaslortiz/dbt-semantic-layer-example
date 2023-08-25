@@ -1,0 +1,10 @@
+default:
+  target: udev
+  outputs:
+    udev:
+      type: databricks
+      schema: "{{ env_var('DBT_SCHEMA', 'dummy_value') }}"
+      host: "{{ env_var('DATABRICKS_HOST') }}"
+      http_path: "{{ env_var('DATABRICKS_HTTP_PATH') }}"
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      threads: 4
