@@ -1,2 +1,11 @@
 version: 2
 
+models:
+    - name: int__green_yellow_tripdata_unioned
+      description: "Model with data from all the trips - unioning Green and Yellow taxis tripdata"
+      columns:
+          - name: trip_id
+            description: "The primary key for the trip"
+            tests:
+                - unique
+                - not_null

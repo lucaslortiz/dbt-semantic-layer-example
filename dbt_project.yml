@@ -30,12 +30,10 @@ models:
     +materialized: table
     staging:
       +materialized: view
-      +location_root: '/mnt/staging'
       +schema: "staging"
       +tags: ["staging"]
     intermediate:
       +materialized: table
-      +location_root: '/mnt/intermediate'
       +schema: "intermediate"
       +tags: ["intermediate"]
     marts:
