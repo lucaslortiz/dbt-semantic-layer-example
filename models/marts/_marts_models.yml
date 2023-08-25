@@ -1,2 +1,37 @@
 version: 2
 
+models:
+  - name: util_calendar
+    description: "Model with one date per row, with relevant date informations and groupings, to be used mainly in reporting."
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+          - unique
+
+  - name: tripdata
+    description: "Model with data from all the trips, joined with the location data."
+    columns:
+      - name: trip_id
+        description: "The primary key for the trip"
+        tests:
+            - unique
+            - not_null
+
+  - name: tripdata_demo
+    description: "Demo - Model with data from all the trips, joined with the location data."
+    columns:
+      - name: trip_id
+        description: "The primary key for the trip"
+        tests:
+            - unique
+            - not_null
+
+  - name: number_of_trips_daily_by_borough_predictions
+    description: "Model joining the aggregation of Green Taxis data and the predictions - number of trips, daily by borough"
+    columns:
+      - name: id
+        description: "The primary key for the aggregation - surrogate key using date and borough"
+        tests:
+            - unique
+            - not_null

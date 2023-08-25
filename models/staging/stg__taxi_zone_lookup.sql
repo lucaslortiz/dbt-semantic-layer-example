@@ -1,14 +1,14 @@
 WITH
 
 source AS (
-    SELECT * FROM {{ source('default', 'taxi_zone_lookup') }}
+    SELECT * FROM {{ source('raw', 'taxi_zone_lookup') }}
 ),
 
 transformations AS (
     SELECT
-        LocationID,
-        Borough,
-        Zone,
+        LocationID AS location_id,
+        Borough AS borough,
+        Zone AS zone,
         service_zone
     FROM source
 )
