@@ -22,7 +22,7 @@ green_columns_selected AS (
         dropoff_date,
         dropoff_time,
         dropoff_hour,
-        trip_duration,
+        trip_duration_minutes,
         store_and_fwd_flag,
         rate_code_id,
         pickup_location_id,
@@ -57,7 +57,7 @@ yellow_columns_selected AS (
         dropoff_date,
         dropoff_time,
         dropoff_hour,
-        trip_duration,
+        trip_duration_minutes,
         store_and_fwd_flag,
         rate_code_id,
         pickup_location_id,
@@ -96,7 +96,7 @@ tripdata_filtered AS (
         AND total_amount > 0
         AND passenger_count > 0
         AND tip_amount >= 0
-        AND trip_duration > 0
+        AND trip_duration_minutes > 0
         AND pickup_date BETWEEN DATE('2021-01-01') AND DATE('2021-12-31') 
         AND dropoff_date BETWEEN DATE('2021-01-01') AND DATE('2021-12-31')
 )
