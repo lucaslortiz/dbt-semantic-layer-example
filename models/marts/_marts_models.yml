@@ -22,7 +22,7 @@ semantic_models:
   #The name of the semantic model.
   - name: tripdata
     defaults:
-      agg_time_dimension: pickup_datetime
+      agg_time_dimension: pickup_date
     description: |
       Tripdata fact table. This table is at the trip grain with one row per trip.
     #The name of the dbt model and schema
@@ -56,7 +56,7 @@ semantic_models:
         agg: sum
     #Dimensions. Either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.  
     dimensions:
-      - name: pickup_datetime
+      - name: pickup_date
         type: time
         type_params:
           time_granularity: day 
