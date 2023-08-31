@@ -17,3 +17,62 @@ models:
         tests:
             - unique
             - not_null
+
+semantic_models:
+  #The name of the semantic model.
+  - name: tripdata
+    defaults:
+      agg_time_dimension: pickup_datetime
+    description: |
+      Tripdata fact table. This table is at the trip grain with one row per trip.
+    #The name of the dbt model and schema
+    model: ref('tripdata')
+    #Entities. These usually corespond to keys in the table.
+    entities:
+      - name: trip_id
+        type: primary
+      - name: vendor
+        type: foreign
+        expr: vendor_id
+      - name: pickup_location
+        type: foreign
+        expr: pickup_location_id
+      - name: dropoff_location
+        type: foreign
+        expr: dropoff_location_id
+    #Measures. These are the aggregations on the columns in the table.
+    measures: 
+      - name: total_amount
+        description: The total value for each trip.
+        agg: sum
+      - name: trip_count
+        expr: 1
+        agg: sum
+      - name: tip_amount
+        description: The total tip paid on each trip. 
+        agg: sum
+      - name: passenger_count
+        description: The total number of passengers on each trip. 
+        agg: sum
+    #Dimensions. Either categorical or time. These add additional context to metrics. The typical querying pattern is Metric by Dimension.  
+    dimensions:
+      - name: pickup_datetime
+        type: time
+        type_params:
+          time_granularity: day 
+      - name: pickup_borough
+        type: categorical
+      - name: dropoff_borough
+        type: categorical
+      - name: traject_borough
+        type: categorical  
+
+metrics:
+  - name: total_amount
+    description: Sum of total trip amount.
+    type: simple
+    label: Total Amount
+    type_params:
+      measure: total_amount
+
+
