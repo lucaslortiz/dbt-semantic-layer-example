@@ -24,7 +24,7 @@ tripdata_zone_joined AS (
         tripdata_unioned.dropoff_date,
         tripdata_unioned.dropoff_time,
         tripdata_unioned.dropoff_hour,
-        tripdata_unioned.trip_duration,
+        tripdata_unioned.trip_duration_minutes,
         tripdata_unioned.store_and_fwd_flag,
         tripdata_unioned.rate_code_id,
         tripdata_unioned.pickup_location_id,
