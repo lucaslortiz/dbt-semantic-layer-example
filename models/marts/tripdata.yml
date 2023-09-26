@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: tripdata
+    description: "Model with data from all the trips, joined with the location data."
+    columns:
+      - name: trip_id
+        description: "The primary key for the trip"
+        tests:
+            - unique
+            - not_null
